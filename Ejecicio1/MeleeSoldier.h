@@ -4,6 +4,7 @@
 class MeleeSoldier :public Soldier {
 protected:
 	int attackRadio;
+	bool haveExtraAttack;
 
 public:
 	MeleeSoldier(string name, int maxLifePoints, int maxStamina, int attackRadio, int damage, int position);

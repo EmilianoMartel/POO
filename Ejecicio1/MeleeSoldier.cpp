@@ -19,3 +19,19 @@ bool MeleeSoldier::isInRange(Soldier* soldier) {
 
 	return false;
 }
+
+void MeleeSoldier::attack(vector<Soldier*> enemies) {
+	currentStamina--;
+	random_device rd;
+	mt19937 gen(rd());
+	uniform_int_distribution<> dis(0, enemies.size() - 1);
+
+	int soldierToAttack = dis(gen);
+
+	if (canAttack() && isInRange(enemies[soldierToAttack])) {
+		do
+		{
+			enemies[soldierToAttack]->takeDamage(damage);
+		} while (haveExtraAttack && canAttack());
+	}
+}
